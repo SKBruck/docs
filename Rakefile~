@@ -382,7 +382,7 @@ task :setup_github_pages, :repo do |t, args|
   user_match = repo_url.match(/(:([^\/]+)|(github.com\/([^\/]+)))/)
   user = user_match[2] || user_match[4]
   branch = (repo_url.match(/\/[\w-]+.github.com/).nil?) ? 'gh-pages' : 'master'
-  project = (branch == 'gh-pages') ? repo_url.match(/\/(.+)(\.git)/)[1] : ''
+  project = (branch == 'gh-pages') ? repo_url.match(/\/([^\/]+)\.git/)[1] : ''
   url = "http://#{user}.github.com"
   url += "/#{project}" unless project == ''
   unless `git remote -v`.match(/origin.+?octopress.git/).nil?
